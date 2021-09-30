@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Cristiane Maragno">
+		<title>Stock Predictor</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/css/bootstrap.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.min.css') }}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+		<!-- Styles -->
+		<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+			
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#sidebarCollapse').on('click', function () {
+					$('#sidebar').toggleClass('active');
+					$(this).toggleClass('active');
+				});
+
+				$('#card-ibm').on('click', function () {
+					const form = document.createElement('form');
+					form.method = 'POST';
+					form.action = "http://127.0.0.1:5000/results";
+
+					const hiddenField = document.createElement('input');
+					hiddenField.type = 'hidden';
+					hiddenField.name = "company";
+					hiddenField.value = "IBM";
+
+					form.appendChild(hiddenField);
+					document.body.appendChild(form);
+					form.submit();
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<!-- Sidebar -->
+			<nav id="sidebar">
+				<div class="sidebar-header">
+					<h3>Stock Predictor</h3>
+				</div>
+		
+				<ul class="list-unstyled components">
+					<li class="active">
+						<a href="#">Configurations</a>
+					</li>
+					<li>
+						<a href="#">Contact</a>
+					</li>
+					<li>
+						<a href="#">LogOut</a>
+					</li>
+				</ul>
+			</nav>
+		
+			<div id="page">
+				<div class="topbar">
+					<button type="button" id="sidebarCollapse" class="navbar-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+				</div>
+
+				<div class="content">
+					<button type="button" class="btn btn-primary add-company"><i class="fa fa-plus"></i> Add company</button>
+					<h2>My watched companys</h2>
+					<hr>
+
+					<div class="cards">
+						<div class="card">
+							<h4>IBM</h4>
+							<div id="card-ibm" class="text-center">
+								<span class="company-icon"><i class="fa fa-file"></i></span>
+								<p>Prospection</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			<div>
+		</div> 
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	</body>
+</html>
